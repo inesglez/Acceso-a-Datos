@@ -1,0 +1,6 @@
+El problema  era que los cambios en los objetos Movil no persistían en la base de datos, porque los objetos de la clase Movil no eran reconocidos como persistentes por ZODB. Para que los cambios en los atributos de un objeto persistan en ZODB, el objeto tiene que ser de una clase que herede de persistent.Persistent. Al heredar Movil de Persistent, le decimos a ZODB que tiene que "rastrear" y guardar los cambios en los objetos de la clase.
+
+Con la modificación, cuando ejecutemos actividad3.py y cambiemos el sistema operativo de movil1 a "Android raro", ese cambio se quedará en la base de datos y se verá reflejado en la siguiente ejecución del script.
+
+Para solucionarlo tenemos que hacer que la clase Movil en actividad2.py herede de persistent.Persistent, lo que le hará que a ZODB pueda rastrear y guardar cualquier cambio que hayamos hecho en las instancias de la clase.
+En la actividad3.py no es necesario hacer cambios en el código, siempre y cuando hayamos modificado la clase Movil en actividad2.py para que herede de persistent.Persistent.
